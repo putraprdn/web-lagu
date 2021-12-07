@@ -1,3 +1,9 @@
+<?php
+if (defined("ALLOWED") === false) {
+	die("Anda tidak boleh membuka halaman ini secara langsung!");
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -10,7 +16,7 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" href="../assets/login/css/style.css">
+	<link rel="stylesheet" href="./assets/login/css/style.css">
 
 </head>
 
@@ -23,17 +29,35 @@
 						<div class="icon d-flex align-items-center justify-content-center">
 							<span class="fa fa-user-o"></span>
 						</div>
-						<form action="#" class="login-form">
+
+						<?php
+						if (isset($_GET['err'])) {
+							$err = $_GET['err'];
+							if ($err == 1) {
+								echo "<div class='alert alert-danger'>Username atau password anda salah!</div>";
+							} elseif ($err == 2) {
+								echo "<div class='alert alert-danger'>Anda harus login sebelum mengakses halaman tersebut!</div>";
+							}
+						}
+						if (isset($_GET['msg'])) {
+							$msg = $_GET['msg'];
+
+							if ($msg == 1) {
+								echo "<div class='alert alert-success'>Logout berhasil! Good bye!</div>";
+							}
+						}
+						?>
+
+
+						<form action="?page=login_proses" class="login-form" method="POST">
 							<div class="form-group">
-								<input type="text" class="form-control rounded-left" placeholder="Username" required>
+								<input type="text" class="form-control rounded-left" name="username" placeholder="Masukkan Username Anda" required>
 							</div>
 							<div class="form-group d-flex">
-								<input type="password" class="form-control rounded-left" placeholder="Password"
-									required>
+								<input type="password" class="form-control rounded-left" name="password" placeholder="Masukkan Password Anda" required>
 							</div>
 							<div class="form-group">
-								<button style="top:-18px!important; position: unset;" type="submit"
-									class="btn btn-primary rounded submit p-3 px-5">Login</button>
+								<button style="top:-18px!important; position: unset;" type="submit" class="btn btn-primary rounded submit p-3 px-5" value="Login">Login</button>
 							</div>
 						</form>
 					</div>
@@ -42,4 +66,5 @@
 		</div>
 	</section>
 </body>
+
 </html>

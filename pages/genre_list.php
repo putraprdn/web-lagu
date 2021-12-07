@@ -21,7 +21,7 @@ if (defined("ALLOWED") === false) {
       <div class="table-responsive p-3">
 
         <?php
-        $sql = 'select * from genre';
+        $sql = 'select * from genre where deleted_at is null';
 
         $result = mysqli_query($koneksi, $sql);
 
@@ -31,7 +31,8 @@ if (defined("ALLOWED") === false) {
 
           <tr>
             <th class="font-weight-bolder">No.</th>
-            <th class="font-weight-bolder">Nama Genre</th>
+            <th width="60%" class="font-weight-bolder">Nama Genre</th>
+            <th width="5%" class="font-weight-bolder">Action</th>
 
           </tr>
 
@@ -45,6 +46,8 @@ if (defined("ALLOWED") === false) {
               <tr>
                 <td>" . $no . "</td>
                 <td>" . $row['nama_genre'] . "</td>
+                <td><a href='?page=genre_edit&id_genre=".$row['id_genre']."' class='btn btn-info mb-0'>Edit</a></td>
+                <td><a href='?page=genre_delete&id_genre=".$row['id_genre']."' class='btn btn-danger mb-0'>Hapus</a></td>
               </tr>";
           }
           ?>

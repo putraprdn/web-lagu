@@ -12,7 +12,7 @@
                 <div class="col-lg-6 col-7">
                     <h6>Hello!</h6>
                     <p class="text-sm mb-0">
-                        Ini Home
+                        Selamat Datang, <?php echo $_SESSION['nama']; ?> 
                         <span class="font-weight-bold ms-1">
                     </p>
                 </div>
