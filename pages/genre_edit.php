@@ -17,7 +17,7 @@ if (defined("ALLOWED") === false) {
                 </div>
             </div>
         </div>
-        <div class="card-body px-0 pb-2">
+        <div class="card-body px-0 pb-2 pt-0">
             <div class="table-responsive p-3">
 
                 <?php
