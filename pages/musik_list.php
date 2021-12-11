@@ -13,9 +13,17 @@ if (defined("ALLOWED") === false) {
           <h4>List Musik</h5>
         </div>
         <div class="row justify-content-end">
-          <div class="col-4 d-flex justify-content-end gap-1">
-            <a href="?page=musik_create" class="btn btn-sm btn-outline-info">Tambah Data</a>
+          <div class="col-6 d-flex justify-content-end gap-1">
+
+            <?php
+            $is_boleh_create = cek_akses($koneksi, 2, $_SESSION['id_role'], "create");
+            if($is_boleh_create == true){
+             echo"<a href='?page=musik_create' class='btn btn-sm btn-outline-info'>Tambah Data</a>";
+            }
+            ?>
             <a href="?page=musik_excel" class="btn btn-sm btn-outline-info ml-2">Export XLSX</a>
+            <a href="?page=musik_pdf" class="btn btn-sm btn-outline-info ml-2">Export PDF</a>
+            <a href="?page=musik_chart" class="btn btn-sm btn-outline-info ml-2">Chart</a>
           </div>
         </div>
       </div>

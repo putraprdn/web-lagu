@@ -136,6 +136,11 @@ session_start();
       $action = $exp_halaman[1];
       $modul = $exp_halaman[0];
 
+      if (in_array($action, ['pdf', 'excel', 'word'])) 
+      {
+        ob_clean();
+      }
+
       $action_modul = $map_action_modul[$action];
       $id_role = $_SESSION['id_role'];
 

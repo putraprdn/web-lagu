@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'ac9736758912bcdb3e4cb924bc97a56ca22dc4b8',
+    'reference' => '039d88121d7b47f770fa2c7d1fb33b9e088760ff',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'ac9736758912bcdb3e4cb924bc97a56ca22dc4b8',
+      'reference' => '039d88121d7b47f770fa2c7d1fb33b9e088760ff',
     ),
     'ezyang/htmlpurifier' => 
     array (
@@ -136,6 +136,15 @@
       array (
       ),
       'reference' => '9174a3d80210dca8daa7f31fec659150bbeabfc6',
+    ),
+    'tecnickcom/tcpdf' => 
+    array (
+      'pretty_version' => '6.4.2',
+      'version' => '6.4.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '172540dcbfdf8dc983bc2fe78feff48ff7ec1c76',
     ),
   ),
 );
