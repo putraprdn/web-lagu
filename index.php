@@ -179,8 +179,7 @@ session_start();
                 document.write(new Date().getFullYear())
               </script>,
               made with <i class="fa fa-heart"></i> by
-              <span class="font-weight-bold">Solo Lord</span>
-              for a better semester.
+              <span class="font-weight-bold">SI 19</span>
             </div>
           </div>
         </div>
