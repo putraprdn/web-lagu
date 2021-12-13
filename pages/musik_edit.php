@@ -23,16 +23,19 @@ if (defined("ALLOWED") === false) {
                 <?php
                 $id_musik = clean_data($_GET['id_musik']);
                 // $sql = "select * from musik where id_musik=" . $id_musik;
-                $sql = "SELECT * FROM musik as m 
-                        JOIN musik_genre as mg on mg.id_musik=m.id_musik 
-                        JOIN genre as g ON mg.id_genre=g.id_genre
-                        where m.id_musik=" . $id_musik;
+                $sql = "SELECT *, GROUP_CONCAT(g.nama_genre) as gg FROM musik as m 
+                JOIN musik_genre as mg on mg.id_musik=m.id_musik 
+                JOIN genre as g ON mg.id_genre=g.id_genre
+                where m.id_musik=".$id_musik;
+
                 // var_dump($sql);die;
                 $result = mysqli_query($koneksi, $sql);
                 $row = mysqli_fetch_assoc($result);
+                // var_dump($row);die;
 
                 $sql2 = "select * from genre where deleted_at is null";
                 $genre = mysqli_query($koneksi, $sql2);
+                // var_dump($genre);
                 ?>
 
 
@@ -61,13 +64,20 @@ if (defined("ALLOWED") === false) {
                             <td>:</td>
                             <td>
                                 <?php
-                                while ($row = mysqli_fetch_assoc($genre)) {
-                                    
-                                    // nama form genre[] -> untuk menyimpan data dalam bentuk array karena typenya checkbox
-                                    echo "<input type='checkbox' name='genre[]' value='" . $row['id_genre'] . "' />" . $row['nama_genre'] . "<br />";
-                                    // var_dump($row['nama_genre']);
-                                }
+                                $genres = explode(",", $row['gg']);
+                                // var_dump($genres);die;
+                                while ($row = mysqli_fetch_assoc($genre)) :
+                                    $nama_genre = $row['nama_genre'];
+                                    // var_dump($row['nama_genre']);die;
                                 ?>
+
+                                    <!-- // nama form genre[] -> untuk menyimpan data dalam bentuk array karena typenya checkbox -->
+                                    <input type="checkbox" name="genre[]" <?php echo (in_array($nama_genre, $genres)) ? 'checked="checked"' : ''; ?> value="<?= $row['id_genre'] ?>" /><?= $row['nama_genre'] ?></br>
+                                    <!-- // var_dump($row['nama_genre']); -->
+                                <?php
+                                endwhile;
+                                ?>
+                               
                             </td>
                         </tr>
                         <tr>
