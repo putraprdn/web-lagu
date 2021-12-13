@@ -179,7 +179,7 @@ session_start();
                 document.write(new Date().getFullYear())
               </script>,
               made with <i class="fa fa-heart"></i> by
-              <span class="font-weight-bold">SI 19</span>
+              <span class="font-weight-bold">Kelompok 9</span>
             </div>
           </div>
         </div>
